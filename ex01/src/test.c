@@ -12,7 +12,6 @@ int   test_small()
   assert(my_strlen("A") == 1);
   assert(my_strlen("AB") == 2);
   assert(my_strlen("ABC") == 3);
-  assert(my_strlen(NULL) == strlen(NULL));
 }
 
 int   test_long()
