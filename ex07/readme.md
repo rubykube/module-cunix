@@ -14,7 +14,7 @@ title: ex07
 
 * Go to the course directory `cd cep/courses/cunix/ex07/`
 * Read carefully the file `include/linked_list.h` you will need to implement the prototype described here
-```
+```c
  typedef struct node {
    void         *data;
    struct node  *next;
@@ -22,26 +22,25 @@ title: ex07
 ```
 
 * Create and Destroy will malloc and free the linked list.
-```
+```c
 node_t  *list_create(void *data);
-void    *list_destroy(node_t **head);
+void    list_destroy(node_t **head, void (*fp)(void *data));
 ```
-
 * Push and unshift will respectively add an element by the end and begining
+```c
+void    list_push(node_t **head, void *data);
+void    list_unshift(node_t **head, char *key, void *data);
 ```
-void    list_push(node_t *head, void *data);
-void    list_unshift(node_t **head, void *data);
 
-```
 * Those functions will remove elements by the end, begining and by a pointer;
-```
+```c
 void    *list_pop(node_t **head);
-void    *list_shift(node_t *head);
+void    *list_shift(node_t **head);
 void    *list_remove(node_t **head, node_t *ptr);
 ```
 
 * You can visit an entire list and apply a function fp
-```
+```c
 void    list_print(node_t *head);
 void    list_visitor(node_t *head, void (*fp)(void *data));
 ```
