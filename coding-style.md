@@ -1,10 +1,6 @@
-# The EPITECH coding standard
+# The HELIOS coding standard
 
-__The text__: http://www.epitech.net/intra/docs/norme.html
-
-Except for exceptions, i do not comment on the points on which i agree.
-
-### Quote: The nomination of objects
+### The nomination of objects
 
 * *only the names of macros are in uppercase, all the others (variables, functions, types, files, rep ...) are lowercase.*
 
@@ -15,8 +11,7 @@ Classic error.
 
 The real rule of thumb concerns identifiers defining constant expressions or strings of characters, such as __certain__ macros (but not function-like macros) and enums.
 
-
-### Citation: Overview
+### Overview
 
 ```
 int     get_type(char type_char)
@@ -83,25 +78,19 @@ int get_type (char type_char)
  ```
  __EDIT__: Removal of () from 1st return.
 
-### Citation: Overview
+
 
 * *We always pass to the line after '{', '}' or a control structure. We indent once for the braces, then a second for their contents.*
 
 No agreement for the 2nd time. This overloads the encoding unnecessarily and creates an excess of indentation that hinders readability.
 
-### Citation: Overview
+
 
  * *The names of the variables will be aligned on the name of the function that contains them and only the name of the function.*
 
 No. We follow the indentation by default, it is much clearer (and automated)... Moreover, we can define variables at the beginning of any block, unless that too is prohibited!
 
-### Quote: Local presentation
-
-* *There is no space between the name of a function and the '(', but always a space between a keyword C (with argument) and the '('*
-
-OK in principle, unfortunately, the indenters that I know do not make the difference, and it is unthinkable that I go back behind to correct by hand ... Not that to do ...
-
-### Citation: continued
+### Continued
 
 * *This concerns while, etc ... and also return, but not sizeof which is an expression returning a value.*
 
@@ -115,7 +104,7 @@ sizeof (type)
 
 therefore, it depends on the cases. Some authors claim that the parentheses around the type can be likened to a 'cast' and therefore belong to the type (not to sizeof).
 
-### Citation: continued
+
 
 * *Note that return is a control structure of C, and exit a function, so pay attention to the spaces in front of the parenthesis.*
 
@@ -123,13 +112,19 @@ Instead of wasting time counting spaces, do not put parentheses to return ...
 
 Curious sense of productivity for a private school ...
 
-### Citation: continued
+
 
 * *When return takes an argument, the argument must be enclosed in parentheses:*
 
 The icing on the cake ...
 
-### Quote: Local presentation
+### Local presentations
+
+* *There is no space between the name of a function and the '(', but always a space between a keyword C (with argument) and the '('*
+
+ OK in principle, unfortunately, the indenters that I know do not make the difference, and it is unthinkable that I go back behind to correct by hand ... Not that to do ..
+
+
 
 * _The pointer symbol_ _(*)_ _always refers to the variable (or function), and never to the type:_
 ```
@@ -139,13 +134,13 @@ char*   cp; /* Incorrect */
 
 One reaches the vertices of the absurdity ... It would be better to impose a prefix p to the identifiers of pointers. It would be much more useful ...
 
-### Quote: Local presentation
+
 
 * *Declarations will be aligned with tabs*
 
 Not in theory, but in practice, the behavior of a TAB is not portable, so no TAB at home. So no alignment of identifiers ...
 
-### Quote: Local presentation
+
 
 * *When a variable is declared one can not at the same time assign a value except when using a static variable.*
 
@@ -160,13 +155,13 @@ z := 'A' // CHARACTER
 t := "hello" // STRING
 ```
 
-### Quote: Local presentation
+
 
 * *The #if and #ifdef indent the following cpp directives. The #else and #endif mark the conditions from which they are derived.*
 
 Not against the theory, except that one day, in a big industrial project, i spent two days understanding that an obscure intermediate mill (basically, she used the preprocessing instructions of a codewritten in C for to generate a source code in assembler who used the same constants ... did not support this syntax ... Since then I avoid the exotic, even standard ...
 
-### Citation: Forbidden
+### Forbidden
 
 * *You do not have the right to switch and for words.*
 
@@ -174,13 +169,13 @@ OK, we can do without it, but again, it's counterproductive.
 
 Moreover a well-written switch-case (constants in order with a simple relationship between them) is often very well optimized by the compiler ...
 
-### Citation: Forbidden
+
 
 * *Multi-line macros*
 
 We could be more flexible (say 3/4 lines max) ...
 
-### Citation: Headers
+### Headers
 
 * *If the file is foo.h, the control macro is FOO_H_*
 
@@ -189,7 +184,7 @@ OK in principle, but several remarks:
 - I advise you to write H_FOO. This avoids the names forbidden as ERREUR_H (E followed by a capital letter is reserved for the implementation).
 - It has been forgotten an essential point is that a guard must be unique (a case of duplication is catastrophic). Personally, I add the initials of the author and a dating in the form YYYYMMDDHHMMSS
 
-### Citation: Headers
+
 
 * *#foo.c always includes foo.h.*
 *#Headers do not have to include themselves. At the extreme limit we can include non-system headers, but never include headers systems.*
@@ -208,8 +203,3 @@ I do not comment on **Makefiles** .
 # Conclusion
 
 It is good to give rules, but we must not forget those that make the code better and not be content with arbitrary constraints.
-https://openclassrooms.com/forum/sujet/la-norme-de-codage-de-l-epitech-41425
-
-### Source
-
-https://openclassrooms.com/forum/sujet/la-norme-de-codage-de-l-epitech-41425
