@@ -1,10 +1,10 @@
-## 8 Queens
+## N - Queens
 
 ### Objectives
 
 * Learn how to use structures in C
 * Learn how to use multidimensional arrays
-* Learn how to test your code
+* Learn how to use search algorithms
 
 ### Actions
 
