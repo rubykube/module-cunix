@@ -37,18 +37,23 @@ int check_connection(map_t *map, elem_t *new_elem, pos_t p, char symbol)
   return -1;
 }
 
-int check_rules(map_t *map, elem_t *new_elem, pos_t p, player_t *player)
+int check_rules(map_t *map, elem_t *new_elem, pos_t p, player_t *player, int log_fd)
 {
-  if (check_free_space(map, new_elem, p) == 0 &&
-      check_connection(map, new_elem, p, player->symbol) == 0)
+  if (check_free_space(map, new_elem, p) == 0)
+  {
+    if (check_connection(map, new_elem, p, player->symbol) == 0)
       return 0;
+    dprintf(log_fd, "Player with symbol %c was stopped. Reason: no connection with other elements\n", player->symbol);
+  }
+  else
+    dprintf(log_fd, "Player with symbol %c was stopped. Reason: no free space\n", player->symbol);
   return -1;
 }
 
 
-int insert_elem(map_t *map, elem_t *new_elem, pos_t p, player_t *player)
+int insert_elem(map_t *map, elem_t *new_elem, pos_t p, player_t *player, int log_fd)
 {
-  if (check_rules(map, new_elem, p, player) != 0)
+  if (check_rules(map, new_elem, p, player, log_fd) != 0)
     return -1;
   else{
     for (int i = 0; i < new_elem->h; i++)
