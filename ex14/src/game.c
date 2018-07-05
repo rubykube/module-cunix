@@ -169,7 +169,7 @@ void        polling_players(vmcore_t *vm)
     if (FD_ISSET(current_player->in, &rfds))
     {
       pos = reading_position(vm, current_player);
-      if(insert_elem(&(vm->map),vm->current_elem, pos, vm->players[vm->turn]) != 0)
+      if(insert_elem(&(vm->map),vm->current_elem, pos, vm->players[vm->turn], vm->log_fd) != 0)
         vm->players[vm->turn]->in_game = 1;
       system("clear");
       print_map(vm);

@@ -54,8 +54,8 @@ typedef struct  vmcore_s
 
 /** elem functions **/
 elem_t* create_elem();
-int insert_elem(map_t *map, elem_t *new_elem, pos_t p, player_t *player);
-int check_rules(map_t *map, elem_t *new_elem, pos_t p, player_t *player);
+int insert_elem(map_t *map, elem_t *new_elem, pos_t p, player_t *player, int log_fd);
+int check_rules(map_t *map, elem_t *new_elem, pos_t p, player_t *player, int log_fd);
 int   find_winner(vmcore_t *vm);
 
 /** map functions **/
