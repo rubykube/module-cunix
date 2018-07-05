@@ -28,6 +28,7 @@ void          print_map(vmcore_t  *vm)
         for(int l=0; l<vm->nbplayers; l++)
           if (vm->map.array[i][j] == vm->players[l]->symbol)
             color = vm->players[l]->color;
+          else color = 5;
         textcolor(1, color, 0);
       }
       printf ("%c ", vm->map.array[i][j]);

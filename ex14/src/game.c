@@ -191,10 +191,17 @@ void      generate_start_points(vmcore_t *vm)
 {
   dprintf(vm->log_fd, "generating start points\n");
   int     x,y;
+
   for (int i = 0; i < vm->nbplayers; i++)
   {
-    x = rand()%vm->map.h;
-    y = rand()%vm->map.w;
+    while (1)
+    {
+      x = rand()%vm->map.h;
+      y = rand()%vm->map.w;
+
+      if (vm->map.array[x][y] == '.')
+        break;
+    }
     vm->map.array[x][y] = vm->players[i]->symbol;
     dprintf(vm->log_fd, "%c x=%d y=%d\n", vm->players[i]->symbol, x, y);
   }
