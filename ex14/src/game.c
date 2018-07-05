@@ -5,6 +5,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <signal.h>
+
+int         interrupt = 0;
+
+void        interrupt_handler(int sig)
+{
+  interrupt = sig;
+}
 
 int         find_winner(vmcore_t *vm)
 {
@@ -24,7 +32,7 @@ int         find_winner(vmcore_t *vm)
     else if (k != 0 && res[k] == res[max_index])
     { free(res);
       return -1;
-  }
+    }
   }
   free(res);
   return max_index;
@@ -134,6 +142,9 @@ void        polling_players(vmcore_t *vm)
   dprintf(vm->log_fd, "polling players\n");
   while(game_is_on(vm) == 0)
   {
+    if(interrupt)
+      return;
+
     current_player = vm->players[vm->turn];
     while(current_player->in_game == 1)
     {
@@ -212,6 +223,8 @@ void        start_game(vmcore_t *vm)
 {
   int       winner;
 
+  signal(SIGINT, interrupt_handler);
+
   dprintf(vm->log_fd, "starting the game\n-----------\n");
   generate_start_points(vm);
   exec_players_pool(vm);
@@ -224,3 +237,4 @@ void        start_game(vmcore_t *vm)
     printf("\n-------------\nthe winner is %s with symbol [%c]\n-------------\n",vm->players[winner]->filepath, vm->players[winner]->symbol);
   kill_players_pool(vm);
 }
+
