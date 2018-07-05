@@ -8,9 +8,11 @@
 * Read all files in include/ src/ and the Makefile before starting anything
 * Create a file src/halloc.c
 * Implement malloc in a file called halloc using the prototype:
-`void *halloc(size_t size);`
+`void *halloc(size_t size);
+ void my_free(void *ptr);`
 * Run `make test`
 
 ### Docs
 `man 3 malloc`
 `man 2 sbrk`
+
