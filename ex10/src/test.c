@@ -71,18 +71,46 @@ int check_board(Cell **table, int size) {
   return 0;
 }
 
-void test_n_queens(int n) {
+void printtable(Cell **table, int size) {
+  char ch;
+
+  printf("Your Solution looks like:\n");
+
+	for (int i = 0; i < size; i++) {
+		for (int j = 0; j < size; j++) {
+		  ch = table[i][j].figure;
+		  if (ch != 'Q') {
+        ch = '#';
+		    if ((i % 2 == 0 && j % 2 == 0) || (i % 2 != 0 && j % 2 != 0)) {
+          ch = ' ';
+        }
+      }
+		  printf("%c%c", ch, ch);
+		}
+	  printf("\n");
+	}
+}
+
+void test_n_queens(int n, int x, int y) {
   Cell **table;
 
-  printf("Testing %dx%d table\n", n, n);
+  printf("\nTesting %dx%d table\n", n, n);
 
   table = malloc(n * sizeof(Cell*));
   for (int i = 0; i < n; i++)
     table[i] = malloc(n * sizeof(Cell));
 
-  table[0][3].figure = 'Q';
+  for (int i = 0; i < n; i++)
+    for (int j = 0; j < n; j++)
+      table[i][j].figure = ' ';
+
+  table[x][y].figure = 'Q';
 
   place_queens(table, n);
+
+  assert(table[x][y].figure == 'Q');
+
+  printtable(table, n);
 
   check_board(table, n);
 
@@ -96,8 +124,18 @@ void test_n_queens(int n) {
 int main() {
   printf("N-Queens solution test\n");
 
-  test_n_queens(8);
-  test_n_queens(9);
+  test_n_queens(8, 4, 3);
+  test_n_queens(8, 0, 3);
+  test_n_queens(8, 5, 5);
+  test_n_queens(8, 6, 6);
+  test_n_queens(8, 7, 7);
+
+  test_n_queens(9, 0, 3);
+  test_n_queens(9, 4, 4);
+  test_n_queens(9, 2, 5);
+  test_n_queens(9, 1, 7);
+  test_n_queens(9, 6, 8);
 
   return 0;
 }
+
