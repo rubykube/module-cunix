@@ -34,7 +34,6 @@
  
 ```
 #### Example of minishell
-```
 $> export HELLO="world"
 $> echo $HELLO
 world
